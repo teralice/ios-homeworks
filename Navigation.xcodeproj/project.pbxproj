@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4809CAD527BD3273004AA8D2 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4809CAD427BD3273004AA8D2 /* ProfileHeaderView.swift */; };
+		4809CAD727BD3358004AA8D2 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4809CAD627BD3358004AA8D2 /* ProfileHeaderView.xib */; };
 		48824C6927ABD1D600701D96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48824C6827ABD1D600701D96 /* AppDelegate.swift */; };
 		48824C6B27ABD1D600701D96 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48824C6A27ABD1D600701D96 /* SceneDelegate.swift */; };
 		48824C6D27ABD1D600701D96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48824C6C27ABD1D600701D96 /* ViewController.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4809CAD427BD3273004AA8D2 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		4809CAD627BD3358004AA8D2 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		48824C6527ABD1D600701D96 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48824C6827ABD1D600701D96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48824C6A27ABD1D600701D96 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4809CAD327BD31F5004AA8D2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				48C3C38327B2CB7B00ED8CC3 /* ProfileViewController.swift */,
+				4809CAD427BD3273004AA8D2 /* ProfileHeaderView.swift */,
+				4809CAD627BD3358004AA8D2 /* ProfileHeaderView.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		48824C5C27ABD1D600701D96 = {
 			isa = PBXGroup;
 			children = (
@@ -71,15 +85,15 @@
 				48824C6827ABD1D600701D96 /* AppDelegate.swift */,
 				48824C6A27ABD1D600701D96 /* SceneDelegate.swift */,
 				48824C6C27ABD1D600701D96 /* ViewController.swift */,
-				48824C7127ABD1D900701D96 /* Assets.xcassets */,
-				48824C7327ABD1D900701D96 /* LaunchScreen.storyboard */,
 				48C3C37B27B2C94C00ED8CC3 /* TabBarController.storyboard */,
 				48C3C38927B2EA4C00ED8CC3 /* InfoViewController.swift */,
 				48C3C38527B2CFC600ED8CC3 /* PostViewController.swift */,
 				48C3C38727B2E79600ED8CC3 /* Post.swift */,
 				48C3C38127B2CB4E00ED8CC3 /* FeedViewController.swift */,
 				48C3C37F27B2CAC800ED8CC3 /* TabBarController.swift */,
-				48C3C38327B2CB7B00ED8CC3 /* ProfileViewController.swift */,
+				4809CAD327BD31F5004AA8D2 /* Profile */,
+				48824C7327ABD1D900701D96 /* LaunchScreen.storyboard */,
+				48824C7127ABD1D900701D96 /* Assets.xcassets */,
 				48824C7627ABD1D900701D96 /* Info.plist */,
 			);
 			path = Navigation;
@@ -143,6 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4809CAD727BD3358004AA8D2 /* ProfileHeaderView.xib in Resources */,
 				48C3C37C27B2C94C00ED8CC3 /* TabBarController.storyboard in Resources */,
 				48824C7527ABD1D900701D96 /* LaunchScreen.storyboard in Resources */,
 				48824C7227ABD1D900701D96 /* Assets.xcassets in Resources */,
@@ -163,6 +178,7 @@
 				48C3C38A27B2EA4C00ED8CC3 /* InfoViewController.swift in Sources */,
 				48C3C38027B2CAC800ED8CC3 /* TabBarController.swift in Sources */,
 				48C3C38227B2CB4E00ED8CC3 /* FeedViewController.swift in Sources */,
+				4809CAD527BD3273004AA8D2 /* ProfileHeaderView.swift in Sources */,
 				48824C6927ABD1D600701D96 /* AppDelegate.swift in Sources */,
 				48824C6B27ABD1D600701D96 /* SceneDelegate.swift in Sources */,
 			);

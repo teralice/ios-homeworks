@@ -14,11 +14,25 @@
                 <viewController id="5WZ-nb-FZL" customClass="ProfileViewController" customModule="Navigation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cOT-uy-5dI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="UEf-Sn-hqV"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMt-XQ-VfG" customClass="ProfileHeaderView" customModule="Navigation" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PV8-6l-UAh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kMt-XQ-VfG" firstAttribute="top" secondItem="PV8-6l-UAh" secondAttribute="top" id="IuQ-AT-CXw"/>
+                            <constraint firstItem="kMt-XQ-VfG" firstAttribute="bottom" secondItem="PV8-6l-UAh" secondAttribute="bottom" id="lcj-Gd-Swh"/>
+                            <constraint firstItem="kMt-XQ-VfG" firstAttribute="trailing" secondItem="PV8-6l-UAh" secondAttribute="trailing" id="sKR-Uf-Rlq"/>
+                            <constraint firstItem="kMt-XQ-VfG" firstAttribute="leading" secondItem="PV8-6l-UAh" secondAttribute="leading" id="udO-VJ-AXf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DmV-JZ-x75"/>
+                    <connections>
+                        <outlet property="profileHeaderView" destination="kMt-XQ-VfG" id="cvh-NV-AeU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVs-o1-psx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,7 +82,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XI6-TB-kA2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <outlet property="tabBar" destination="XI6-TB-kA2" id="5VA-ox-IQ8"/>
