@@ -11,7 +11,6 @@ class ProfileViewController: UIViewController {
     
     private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView(frame: .zero)
-     //   view.delegate = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -20,19 +19,12 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupNavigationBar()
         self.setupView()
-    }
-    
-    private func setupNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "Профиль"
     }
     
     private lazy var nextButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .gray
-      //  button.addTarget(self, action: #selector(self.didTapStatusButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -55,16 +47,3 @@ class ProfileViewController: UIViewController {
         NSLayoutConstraint.activate([topConstraint, leadingConstraint, trailingConstraint, heightConstraint, nextButtonLeadingConstraint, nextButtonTrailingConstraint, nextButtonBottomConstaraint].compactMap({ $0 }))
     }
 }
-
-//extension ViewController: ProfileHeaderViewProtocol {
-//
-//    func didTapStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
-//        self.heightConstraint?.constant = textFieldIsVisible ? 214 : 170
-//
-//        UIView.animate(withDuration: 0.3, delay: 0.0) {
-//            self.view.layoutIfNeeded()
-//        } completion: { _ in
-//            completion()
-//        }
-//    }
-//}

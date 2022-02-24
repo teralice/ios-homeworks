@@ -7,13 +7,7 @@
 
 import UIKit
 
-//protocol ProfileHeaderViewProtocol: AnyObject {
-//    func didTapStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void )
-//}
-
 class ProfileHeaderView: UIView {
-    
-   // weak var delegate: ProfileHeaderViewProtocol?
     
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -46,7 +40,6 @@ class ProfileHeaderView: UIView {
     private lazy var setStatusButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .orange
-      //  button.addTarget(self, action: #selector(self.didTapStatusButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -100,7 +93,6 @@ class ProfileHeaderView: UIView {
         let imageViewAspectRatio = self.avatarImageView.heightAnchor.constraint(equalTo: self.avatarImageView.widthAnchor, multiplier: 1.0)
         
         self.buttonTopConstraint = self.setStatusButton.topAnchor.constraint(equalTo: self.infoStackView.bottomAnchor, constant: 20)
-       // self.buttonTopConstraint?.priority = UILayoutPriority(rawValue: 999)
         let buttonLeadingConstraint = self.setStatusButton.leadingAnchor.constraint(equalTo: self.infoStackView.leadingAnchor)
         let buttonTrailingConstraint = self.setStatusButton.trailingAnchor.constraint(equalTo: self.infoStackView.trailingAnchor)
         let buttonBottomConstaraint = self.setStatusButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
@@ -110,31 +102,4 @@ class ProfileHeaderView: UIView {
             topConstraint, leadingConstraint, trailingConstraint, buttonTopConstraint, buttonLeadingConstraint, buttonTrailingConstraint, buttonBottomConstaraint, buttonHeightConstraint, imageViewAspectRatio
         ].compactMap({ $0 }))
     }
-   /*
-    @objc func didTapStatusButton() {
-        if self.statusTextField.isHidden {
-            self.addSubview(self.statusTextField)
-            
-            self.buttonTopConstraint?.isActive = false // Необходимо деактивировать констрейнт, иначе будет конфликт констрейнтов, и Auto Layout не сможет однозначно определить фреймы textField'а.
-            
-            let topConstraint = self.statusTextField.topAnchor.constraint(equalTo: self.infoStackView.bottomAnchor, constant: 10)
-            let leadingConstraint = self.statusTextField.leadingAnchor.constraint(equalTo: self.statusLabel.leadingAnchor)
-            let trailingConstraint = self.statusTextField.trailingAnchor.constraint(equalTo: self.infoStackView.trailingAnchor)
-            let heightTextFieldConstraint = self.statusTextField.heightAnchor.constraint(equalToConstant: 34) // Не указав высоту textField'а, получается неоднозначность/неопределенность констрейнтов. Auto Layout на основе этой неопределенности имеет множество решений (height для stackView, textField), выбирая оптимальное, а не необходимое, то есть вместо 34pts для textField'а растягивается stackView.
-            self.buttonTopConstraint = self.setStatusButton.topAnchor.constraint(equalTo: self.statusTextField.bottomAnchor, constant: 20)
-            
-            NSLayoutConstraint.activate([
-                topConstraint, leadingConstraint, trailingConstraint, heightTextFieldConstraint, self.buttonTopConstraint
-            ].compactMap({ $0 }))
-            
-        } else {
-           // #warning("Убрать textField из вью!")
-            self.statusTextField.removeFromSuperview()
-            self.setStatusButton.setTitle("status", for: .normal)
-        }
-        self.delegate?.didTapStatusButton(textFieldIsVisible: self.statusTextField.isHidden) { [weak self] in
-                self?.statusTextField.isHidden.toggle()
-        }
-    }
-    */
 }
