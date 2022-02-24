@@ -75,8 +75,6 @@ class ProfileHeaderView: UIView {
     private func drawSelf() {
         self.backgroundColor = .white
         
-        self.statusTextField.isHidden = true
-        
         self.addSubview(self.infoStackView)
         self.addSubview(self.setStatusButton)
         self.addSubview(self.statusTextField)
@@ -85,6 +83,7 @@ class ProfileHeaderView: UIView {
         self.infoStackView.addArrangedSubview(self.labelStackView)
         self.labelStackView.addArrangedSubview(self.fullNameLabel)
         self.labelStackView.addArrangedSubview(self.statusLabel)
+        self.labelStackView.addArrangedSubview(self.statusTextField)
         
         let topConstraint = self.infoStackView.topAnchor.constraint(equalTo: self.topAnchor)
         let leadingConstraint = self.infoStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
