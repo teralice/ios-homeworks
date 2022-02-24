@@ -38,10 +38,8 @@ class ProfileHeaderView: UIView {
         self.showStatusButton.layer.shadowOffset.width = 4
         self.showStatusButton.layer.shadowColor = UIColor.black.cgColor
         self.showStatusButton.layer.shadowOpacity = 0.7
-    }
-    
-    @IBAction func didTapButton(_ sender: Any) {
-        buttonPressed()
+        
+        self.showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
     @objc func buttonPressed() {

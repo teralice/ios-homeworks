@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4809CAD527BD3273004AA8D2 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4809CAD427BD3273004AA8D2 /* ProfileHeaderView.swift */; };
 		4809CAD727BD3358004AA8D2 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4809CAD627BD3358004AA8D2 /* ProfileHeaderView.xib */; };
+		4879A37227C778290081094B /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4809CAD427BD3273004AA8D2 /* ProfileHeaderView.swift */; };
 		48824C6927ABD1D600701D96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48824C6827ABD1D600701D96 /* AppDelegate.swift */; };
 		48824C6B27ABD1D600701D96 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48824C6A27ABD1D600701D96 /* SceneDelegate.swift */; };
 		48824C6D27ABD1D600701D96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48824C6C27ABD1D600701D96 /* ViewController.swift */; };
@@ -178,7 +178,7 @@
 				48C3C38A27B2EA4C00ED8CC3 /* InfoViewController.swift in Sources */,
 				48C3C38027B2CAC800ED8CC3 /* TabBarController.swift in Sources */,
 				48C3C38227B2CB4E00ED8CC3 /* FeedViewController.swift in Sources */,
-				4809CAD527BD3273004AA8D2 /* ProfileHeaderView.swift in Sources */,
+				4879A37227C778290081094B /* ProfileHeaderView.swift in Sources */,
 				48824C6927ABD1D600701D96 /* AppDelegate.swift in Sources */,
 				48824C6B27ABD1D600701D96 /* SceneDelegate.swift in Sources */,
 			);

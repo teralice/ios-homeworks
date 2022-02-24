@@ -41,14 +41,11 @@
                     <buttonConfiguration key="configuration" style="plain" title="Show status">
                         <color key="baseForegroundColor" red="1" green="0.99894421779999998" blue="0.97591456170000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </buttonConfiguration>
-                    <connections>
-                        <action selector="didTapButton:" destination="-1" eventType="touchUpInside" id="VWy-se-3vs"/>
-                    </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" text="Waiting for something..." textAlignment="natural" minimumFontSize="17" id="JXm-ce-Npw">
                     <rect key="frame" x="173" y="107" width="218" height="34"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -72,9 +69,6 @@
         <image name="3408" width="400" height="400"/>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
