@@ -196,10 +196,10 @@
             </objects>
             <point key="canvasLocation" x="2577" y="151"/>
         </scene>
-        <!--View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="Jqn-Mu-RVP">
             <objects>
-                <viewController id="wGg-0O-GjI" sceneMemberID="viewController">
+                <viewController id="wGg-0O-GjI" customClass="LogInViewController" customModule="Navigation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="92X-py-tGY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MvA-DV-RUv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="-1254"/>
+            <point key="canvasLocation" x="900.00000000000011" y="-1254.2410714285713"/>
         </scene>
     </scenes>
     <resources>
