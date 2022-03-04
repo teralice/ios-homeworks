@@ -23,8 +23,8 @@ class ProfileHeaderView: UIView {
     }
 
     private func setupView() {
-        let view = self.loadViewFromXib()
-        self.addSubview(view)
+        let subview = self.loadViewFromXib()
+        self.addSubview(subview)
         
         self.nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         self.textField.font = UIFont.systemFont(ofSize: 14, weight: .regular)

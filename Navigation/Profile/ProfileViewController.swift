@@ -8,16 +8,18 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
+    
     @IBOutlet weak var profileHeaderView: ProfileHeaderView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.profileHeaderView.backgroundColor = .lightGray
         self.navigationItem.title = "Профиль"
+        profileHeaderView.backgroundColor = .lightGray
         self.view.addSubview(profileHeaderView)
     }
     
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         profileHeaderView.frame = self.view.frame
     }
 }

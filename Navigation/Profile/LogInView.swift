@@ -6,8 +6,14 @@
 //
 
 import UIKit
+
+protocol MyViewDelegate: AnyObject {
+    func didTapButton()
+}
  
 class LogInView: UIView {
+    
+    weak var delegate: MyViewDelegate?
  
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -66,9 +72,14 @@ class LogInView: UIView {
         button.backgroundColor = UIColor(named: "ColorSet")
         button.setTitleColor(.white, for: .normal)
         button.backgroundImage(for: .selected)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    @objc func buttonPressed() {
+        delegate?.didTapButton()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -100,7 +111,6 @@ class LogInView: UIView {
         let topConstraint = self.logoImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 120)
         let widthConstraint = self.logoImageView.widthAnchor.constraint(equalToConstant: 100)
         let heightConstraint = self.logoImageView.heightAnchor.constraint(equalToConstant: 100)
-        //x
         let xpositionConstraint = self.logoImageView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor)
  
         return [

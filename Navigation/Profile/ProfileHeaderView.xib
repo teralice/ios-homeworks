@@ -9,10 +9,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileHeaderView" customModule="Navigation" customModuleProvider="target">
             <connections>
-                <outlet property="nameLabel" destination="ve9-NV-6z0" id="8yv-gD-fwz"/>
-                <outlet property="photoImageView" destination="Q8S-pB-4cY" id="dWN-RU-26n"/>
-                <outlet property="showStatusButton" destination="vfz-qT-mYz" id="cT9-OQ-WmW"/>
-                <outlet property="textField" destination="JXm-ce-Npw" id="ueN-jZ-zaD"/>
+                <outlet property="nameLabel" destination="ve9-NV-6z0" id="tge-eO-FaW"/>
+                <outlet property="photoImageView" destination="Q8S-pB-4cY" id="5LP-UR-wi8"/>
+                <outlet property="showStatusButton" destination="vfz-qT-mYz" id="Z4e-ve-1Cj"/>
+                <outlet property="textField" destination="JXm-ce-Npw" id="bZk-zc-oOS"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

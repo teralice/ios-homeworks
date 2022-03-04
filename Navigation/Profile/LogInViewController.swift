@@ -7,11 +7,11 @@
 
 import UIKit
  
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, MyViewDelegate {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .blue
+        scrollView.contentSize = self.view.bounds.size
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -22,32 +22,51 @@ class LogInViewController: UIViewController {
         return view
     }()
     
+    private lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "logo")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
+        logInView.delegate = self
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
     private func setupView() {
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = true
         
         self.view.addSubview(self.scrollView)
         self.scrollView.addSubview(logInView)
         
         let scrollViewTopConstraint = self.scrollView.topAnchor.constraint(equalTo: self.view.topAnchor)
-        let scrollViewRightConstraint = self.scrollView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
+        let scrollViewRightConstraint = self.scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         let scrollViewBottomConstraint = self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-        let scrollViewLeftConstraint = self.scrollView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
+        let scrollViewLeftConstraint = self.scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
         
-        let topConstraint = self.logInView.topAnchor.constraint(equalTo: self.view.topAnchor)
-        let leadingConstraint = self.logInView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor)
-        let trailingConstraint = self.logInView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
-        let bottomConstraint = self.logInView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+        let topConstraint = self.logInView.topAnchor.constraint(equalTo: self.scrollView.topAnchor)
+        let leadingConstraint = self.logInView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
+        let trailingConstraint = self.logInView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        let bottomConstraint = self.logInView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         
         NSLayoutConstraint.activate([
-            scrollViewTopConstraint, scrollViewRightConstraint, scrollViewBottomConstraint, scrollViewLeftConstraint, topConstraint, leadingConstraint, trailingConstraint, bottomConstraint
+            scrollViewTopConstraint,
+            scrollViewRightConstraint,
+            scrollViewLeftConstraint,
+            topConstraint,
+            leadingConstraint,
+            trailingConstraint,
+            bottomConstraint,
+            scrollViewBottomConstraint
         ])
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)    // подписаться на уведомления
         let nc = NotificationCenter.default
@@ -74,5 +93,11 @@ class LogInViewController: UIViewController {
         scrollView.verticalScrollIndicatorInsets = .zero
         
     }
+
+    func didTapButton() {
+        let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+    }
+    
 }
 

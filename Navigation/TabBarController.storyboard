@@ -11,12 +11,13 @@
         <!--Profile View Controller-->
         <scene sceneID="hSm-3h-vIw">
             <objects>
-                <viewController id="5WZ-nb-FZL" customClass="ProfileViewController" customModule="Navigation" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eVs-o1-psx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5WZ-nb-FZL" customClass="ProfileViewController" customModule="Navigation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cOT-uy-5dI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMt-XQ-VfG" customClass="ProfileHeaderView" customModule="Navigation" customModuleProvider="target">
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMt-XQ-VfG" customClass="ProfileHeaderView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </view>
                         </subviews>
@@ -31,12 +32,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="DmV-JZ-x75"/>
                     <connections>
-                        <outlet property="profileHeaderView" destination="kMt-XQ-VfG" id="cvh-NV-AeU"/>
+                        <outlet property="profileHeaderView" destination="kMt-XQ-VfG" id="3Rk-9k-oqf"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eVs-o1-psx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900.00000000000011" y="-575.22321428571422"/>
+            <point key="canvasLocation" x="1696" y="-575"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="phY-G3-dbX">
@@ -210,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MvA-DV-RUv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900.00000000000011" y="-1254.2410714285713"/>
+            <point key="canvasLocation" x="900" y="-575"/>
         </scene>
     </scenes>
     <resources>
