@@ -13,6 +13,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = false
+        navigationItem.hidesBackButton = true
         self.navigationItem.title = "Профиль"
         profileHeaderView.backgroundColor = .lightGray
         self.view.addSubview(profileHeaderView)
