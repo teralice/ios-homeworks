@@ -7,23 +7,32 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var showStatusButton: UIButton!
+    @IBOutlet weak var textField: UITextField!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//    }
+    
+    override init(reuseIdentifier: String?){
+          super.init(reuseIdentifier: reuseIdentifier)
+      }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupView()
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 
     private func setupView() {
         let subview = self.loadViewFromXib()
+        subview.backgroundColor = .systemGray6
         self.addSubview(subview)
         
         self.nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)

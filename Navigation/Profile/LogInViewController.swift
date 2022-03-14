@@ -95,8 +95,7 @@ class LogInViewController: UIViewController, MyViewDelegate {
     }
 
     func didTapButton() {
-        let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "Profile") as! ProfileViewController
-        self.navigationController?.pushViewController(profileViewController, animated: true)
+        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
     
 }
