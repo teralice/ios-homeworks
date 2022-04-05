@@ -9,6 +9,11 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    private lazy var profileHeaderView: ProfileHeaderView = {
+        let view = ProfileHeaderView(frame: .zero)
+        return view
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = UITableView.automaticDimension
@@ -104,11 +109,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProfileHeaderView") as? ProfileHeaderView
-           return header
+           let headerView =  profileHeaderView
+           headerView.backgroundColor = .systemGray6
+        headerView.heightAnchor.constraint(equalToConstant: 250).isActive = true
+
+           return headerView
        }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 250
-        }
 }
