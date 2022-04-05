@@ -13,9 +13,11 @@ class ProfileViewController: UIViewController {
         let tableView = UITableView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
+        tableView.allowsSelection = true
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosCell")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "ArticleCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -87,15 +89,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return self.dataSource.count
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? PostTableViewCell else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
             return cell
         }
-        
+
         let article = self.dataSource[indexPath.row]
         let viewModel = PostTableViewCell.ViewModel(author: article.author, description: article.description, image: article.imageUI, likes: article.likes, views: article.views)
         cell.setup(with: viewModel)
+      //  let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosCell", for: indexPath)
         return cell
     }
     
@@ -111,4 +117,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
             return 250
         }
+    
+    private func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+
+       print("hello")
+        //let ViewController2 = ViewController2(nibName: "ViewController2", bundle: nil)
+        //self.navigationController.pushViewController(ViewController2, animated: true)
+    }
 }
