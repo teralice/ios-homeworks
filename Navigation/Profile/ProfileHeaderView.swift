@@ -7,54 +7,6 @@
 
 import UIKit
 
-//class ProfileHeaderView: UIView {
-//
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        self.setupView()
-//    }
-//
-//    private func setupView() {
-//        let subview = self.loadViewFromXib()
-//        self.addSubview(subview)
-//
-//        self.nameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-//        self.textField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-//
-//        self.photoImageView.layer.cornerRadius = self.photoImageView.frame.height/2
-//        self.photoImageView.layer.borderColor = UIColor.white.cgColor
-//        self.photoImageView.layer.borderWidth = 3
-//
-//        self.showStatusButton.layer.cornerRadius = self.showStatusButton.frame.height/4
-//        self.showStatusButton.layer.shadowOffset.height = 4
-//        self.showStatusButton.layer.shadowOffset.width = 4
-//        self.showStatusButton.layer.shadowColor = UIColor.black.cgColor
-//        self.showStatusButton.layer.shadowOpacity = 0.7
-//
-//        self.showStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-//    }
-//
-//    @objc func buttonPressed() {
-//        print(textField.text!)
-//    }
-//
-//    private func loadViewFromXib() -> UIView {
-//        guard let view = Bundle.main.loadNibNamed("ProfileHeaderView", owner: self, options: nil)?.first as? UIView else { return UIView() }
-//
-//        return view
-//    }
-//}
-
-import UIKit
-
-//protocol ProfileHeaderViewProtocol: AnyObject {
-//    func didTapShowStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void)
-//}
-
 class ProfileHeaderView: UIView {
     
     private lazy var backView: UIView = {
@@ -109,27 +61,10 @@ class ProfileHeaderView: UIView {
         let textField = UITextField()
         textField.placeholder = "Good news, everybody!"
         textField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-//        textField.keyboardType = .default
-//        textField.returnKeyType = UIReturnKeyType.done
-//        textField.clearButtonMode = UITextField.ViewMode.whileEditing
-//        textField.keyboardAppearance = .default
-//        textField.autocapitalizationType = .words
-//        textField.font = .systemFont(ofSize: 15)
-//        textField.textColor = .systemGray2
-//        textField.backgroundColor = .systemGray4
-//        textField.borderStyle = .roundedRect
-//        textField.returnKeyType = .next
-//        textField.keyboardType = .default
-//        textField.clearButtonMode = .always
-//        textField.alpha = 0
         textField.translatesAutoresizingMaskIntoConstraints = false
 
         return textField
     }()
-
-//    private var topSetStatusButtonOn: NSLayoutConstraint?
-//    private var topSetStatusButtonOff: NSLayoutConstraint?
-//    weak var delegate: ProfileHeaderViewProtocol?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -140,24 +75,11 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if (touches.first) != nil {
-//            endEditing(true)
-//        }
-//        super.touchesBegan(touches, with: event)
-//    }
-
     private func drawSelf() {
-      //  self.addSubview(self.backView)
         self.addSubview(self.avatarImageView)
         self.addSubview(self.fullNameLabel)
         self.addSubview(self.statusButton)
         self.addSubview(self.statusTextField)
-        
-//        let topViewConstraint = self.backView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor)
-//        let leadingViewConstraint = self.backView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor)
-//        let trailingViewConstraint = self.backView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor)
-//        let bottomViewConstraint = self.backView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         
         let topAvatarImageConstraint = self.avatarImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16)
         let leadingAvatarImageConstraint = self.avatarImageView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16)
@@ -168,8 +90,6 @@ class ProfileHeaderView: UIView {
         let leadingFullNameLabelConstraint = self.fullNameLabel.leadingAnchor.constraint(equalTo: self.avatarImageView.trailingAnchor, constant: 16) //?
         let trailingFullNameLabelConstraint = self.fullNameLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         
-//        self.topSetStatusButtonOn = self.statusButton.topAnchor.constraint(equalTo: self.avatarImageView.bottomAnchor, constant: 16)
-//        self.topSetStatusButtonOn?.priority = UILayoutPriority(rawValue: 999)
         let bottomTextFieldConstraint = self.statusTextField.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -34)
         let leadingTextFieldConstraint = self.statusTextField.leadingAnchor.constraint(equalTo: fullNameLabel.leadingAnchor)
         let trailingTextFieldConstraint = self.statusTextField.trailingAnchor.constraint(equalTo: fullNameLabel.trailingAnchor)
@@ -180,7 +100,6 @@ class ProfileHeaderView: UIView {
         let heightSetStatusButton = self.statusButton.heightAnchor.constraint(equalToConstant: 50)
         
         NSLayoutConstraint.activate([
-          //  topViewConstraint,leadingViewConstraint, trailingViewConstraint,bottomViewConstraint,
             topAvatarImageConstraint, leadingAvatarImageConstraint, widthAvatarImageConstraint,
             heightAvatarImageConstraint, topFullNameLabelConstraint, leadingFullNameLabelConstraint,
             trailingFullNameLabelConstraint, topSetStatusButton, leadingSetStatusButton, trailingSetStatusButton,
@@ -191,46 +110,5 @@ class ProfileHeaderView: UIView {
     @objc func buttonPressed() {
         print(statusTextField.text!)
     }
-
-//    @objc private func didTapSetStatusButton() {
-//        if self.statusTextField.isHidden {
-//            self.statusTextField.alpha = 1
-//
-//            NSLayoutConstraint.deactivate([self.topSetStatusButtonOff].compactMap({ $0 }))
-//            let topConstraint = self.statusTextField.topAnchor.constraint(equalTo: self.statusLabel.bottomAnchor, constant: 27)
-//            let leadingConstraint = self.statusTextField.leadingAnchor.constraint(equalTo: self.statusLabel.leadingAnchor)
-//            let trailingConstraint = self.statusTextField.trailingAnchor.constraint(equalTo: self.statusLabel.trailingAnchor)
-//            let heightStatusTextFieldConstraint = self.statusTextField.heightAnchor.constraint(equalToConstant: 34)
-//
-//            self.topSetStatusButtonOn = self.statusButton.topAnchor.constraint(equalTo: self.avatarImageView.bottomAnchor, constant: 70)
-//
-//            NSLayoutConstraint.activate([
-//                topConstraint, leadingConstraint, trailingConstraint, heightStatusTextFieldConstraint,
-//                self.topSetStatusButtonOn
-//            ].compactMap({ $0 }))
-//            self.statusButton.setTitle("Set status", for: .normal)
-//        } else {
-//            self.statusTextField.isHidden = false
-//            self.statusTextField.alpha = 0
-//            self.statusButton.setTitle("Show status", for: .normal)
-//            NSLayoutConstraint.deactivate([self.topSetStatusButtonOn].compactMap({ $0 }))
-//            if self.statusTextField.text != "" {
-//                self.statusLabel.text = self.statusTextField.text
-//                self.statusTextField.text = .none
-//
-//            }
-//            self.topSetStatusButtonOff = self.statusButton.topAnchor.constraint(equalTo: self.avatarImageView.bottomAnchor, constant: 16)
-//
-//            NSLayoutConstraint.activate([self.topSetStatusButtonOff].compactMap({ $0 }))
-//        }
-//        self.delegate?.didTapShowStatusButton(textFieldIsVisible: self.statusTextField.isHidden) { [weak self] in
-//            self?.statusTextField.isHidden.toggle()
-//        }
-//    }
-    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        self.statusTextField.resignFirstResponder()
-//        return true
-//    }
 }
 

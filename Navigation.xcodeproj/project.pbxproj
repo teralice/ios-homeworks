@@ -20,7 +20,6 @@
 		48C3C38427B2CB7B00ED8CC3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C3C38327B2CB7B00ED8CC3 /* ProfileViewController.swift */; };
 		48C3C38627B2CFC600ED8CC3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C3C38527B2CFC600ED8CC3 /* PostViewController.swift */; };
 		48C3C38827B2E79600ED8CC3 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C3C38727B2E79600ED8CC3 /* Post.swift */; };
-		48C3C38A27B2EA4C00ED8CC3 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C3C38927B2EA4C00ED8CC3 /* InfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +38,6 @@
 		48C3C38327B2CB7B00ED8CC3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		48C3C38527B2CFC600ED8CC3 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		48C3C38727B2E79600ED8CC3 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		48C3C38927B2EA4C00ED8CC3 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +84,6 @@
 				48824C6827ABD1D600701D96 /* AppDelegate.swift */,
 				48824C6A27ABD1D600701D96 /* SceneDelegate.swift */,
 				48824C6C27ABD1D600701D96 /* ViewController.swift */,
-				48C3C38927B2EA4C00ED8CC3 /* InfoViewController.swift */,
 				48C3C38527B2CFC600ED8CC3 /* PostViewController.swift */,
 				48C3C38727B2E79600ED8CC3 /* Post.swift */,
 				48C3C38127B2CB4E00ED8CC3 /* FeedViewController.swift */,
@@ -174,7 +171,6 @@
 				48AC2C8427CF849E008E7666 /* LogInViewController.swift in Sources */,
 				48C3C38627B2CFC600ED8CC3 /* PostViewController.swift in Sources */,
 				48C3C38827B2E79600ED8CC3 /* Post.swift in Sources */,
-				48C3C38A27B2EA4C00ED8CC3 /* InfoViewController.swift in Sources */,
 				48AC2C8627CF84BC008E7666 /* LogInView.swift in Sources */,
 				48C3C38027B2CAC800ED8CC3 /* TabBarController.swift in Sources */,
 				48C3C38227B2CB4E00ED8CC3 /* FeedViewController.swift in Sources */,
