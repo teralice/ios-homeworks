@@ -8,8 +8,12 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-
-    @IBOutlet weak var continueButton: UIButton!
+    
+    private lazy var continueButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     static let post = Post(title: "Публикация")
     
     override func viewDidLoad() {

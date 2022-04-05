@@ -8,8 +8,11 @@
 import UIKit
 
 class PostViewController: UIViewController {
-
-    @IBOutlet weak var itemButton: UIBarButtonItem!
+    
+    private lazy var itemButton: UIBarButtonItem = {
+           let button = UIBarButtonItem()
+           return button
+       }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
