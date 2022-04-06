@@ -9,6 +9,12 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    private lazy var profileHeaderView: ProfileHeaderView = {
+        let view = ProfileHeaderView(frame: .zero)
+        view.backgroundColor = .systemGray6
+        return view
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = UITableView.automaticDimension
@@ -86,42 +92,39 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSource.count
+        return self.dataSource.count + 1
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
-    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? PostTableViewCell else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosCell", for: indexPath)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? PostTableViewCell else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+                return cell
+            }
+            
+            let article = self.dataSource[indexPath.row - 1]
+            let viewModel = PostTableViewCell.ViewModel(author: article.author, description: article.description, image: article.imageUI, likes: article.likes, views: article.views)
+            cell.setup(with: viewModel)
+            
             return cell
         }
-
-        let article = self.dataSource[indexPath.row]
-        let viewModel = PostTableViewCell.ViewModel(author: article.author, description: article.description, image: article.imageUI, likes: article.likes, views: article.views)
-        cell.setup(with: viewModel)
-      //  let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosCell", for: indexPath)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ProfileHeaderView") as? ProfileHeaderView
-           return header
-       }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 250
-        }
-    
-    private func tableView(_ tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
+        let headerView =  profileHeaderView
+        headerView.backgroundColor = .systemGray6
+        headerView.heightAnchor.constraint(equalToConstant: 250).isActive = true
 
-       print("hello")
-        //let ViewController2 = ViewController2(nibName: "ViewController2", bundle: nil)
-        //self.navigationController.pushViewController(ViewController2, animated: true)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            self.navigationController?.pushViewController(PhotosViewController(), animated: true)
+            self.navigationItem.backButtonTitle = "Назад"
+        } else { return }
     }
 }

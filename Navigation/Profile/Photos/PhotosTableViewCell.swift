@@ -53,9 +53,9 @@ class PhotosTableViewCell: UITableViewCell {
     
     private lazy var firstImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "1")
+        imageView.image = UIImage(named: "c1")
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 6
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -63,9 +63,9 @@ class PhotosTableViewCell: UITableViewCell {
     
     private lazy var secondImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "2")
+        imageView.image = UIImage(named: "c2")
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 6
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -73,9 +73,9 @@ class PhotosTableViewCell: UITableViewCell {
     
     private lazy var thirdImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "3")
+        imageView.image = UIImage(named: "c3")
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 6
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -83,9 +83,9 @@ class PhotosTableViewCell: UITableViewCell {
     
     private lazy var fourImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "4")
+        imageView.image = UIImage(named: "c4")
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 6
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -110,7 +110,6 @@ class PhotosTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
-        //self.contentView.addSubview(self.backView)
         self.photosStackView.addArrangedSubview(self.firstImageView)
         self.photosStackView.addArrangedSubview(self.secondImageView)
         self.photosStackView.addArrangedSubview(self.thirdImageView)
@@ -118,7 +117,6 @@ class PhotosTableViewCell: UITableViewCell {
         
         self.backView.addSubview(self.photosStackView)
         
-       // self.backView.addSubview(self.scrollView)
         self.backView.addSubview(self.titleLabel)
         self.backView.addSubview(self.iconImageView)
         self.contentView.addSubview(self.backView)
@@ -157,7 +155,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     private func iconConstraints() -> [NSLayoutConstraint] {
         
-        let trailingConstraint = self.iconImageView.trailingAnchor.constraint(equalTo: self.backView.trailingAnchor, constant: -12.0)
+        let trailingConstraint = self.iconImageView.trailingAnchor.constraint(equalTo: self.backView.trailingAnchor, constant: -12)
         let centerYConstraint = self.iconImageView.centerYAnchor.constraint(equalTo: self.titleLabel.centerYAnchor)
         let heightConstraint = self.iconImageView.heightAnchor.constraint(equalTo: self.titleLabel.heightAnchor)
         let widthConstraint = self.iconImageView.widthAnchor.constraint(equalTo: self.iconImageView.heightAnchor, multiplier: 1.0)
