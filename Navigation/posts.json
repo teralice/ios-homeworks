@@ -21,18 +21,18 @@
         "views": 1500
     },
     {
-        "author": "Larisa",
-        "description": "Dessert based on cream cheese or curd mousse is very popular in the USA. But it originates from ancient Greece in the form of a curd pie, which was prepared for Olympic athletes. In Europe, the dish became popular thanks to the Romans, and it came to the USA along with immigrants. From there, the widespread distribution of this dessert began. Of course, New York chefs have made great efforts to improve this dessert to the maximum.",
-        "image": "4",
-        "likes": 33,
-        "views": 189
-    },
-    {
         "author": "Антонио",
         "description": "Пирожные makarons интересны тем, что могут быть абсолютно любого вкуса, который только придет вам на ум. Классическими считаются вкусы : фисташка, шоколад, ваниль, малина и лимон.",
         "image": "5",
         "likes": 100,
         "views": 1100
+    },
+    {
+        "author": "Larisa",
+        "description": "Dessert based on cream cheese or curd mousse is very popular in the USA. But it originates from ancient Greece in the form of a curd pie, which was prepared for Olympic athletes. In Europe, the dish became popular thanks to the Romans, and it came to the USA along with immigrants. From there, the widespread distribution of this dessert began. Of course, New York chefs have made great efforts to improve this dessert to the maximum.",
+        "image": "4",
+        "likes": 33,
+        "views": 189
     }
     ]
 }

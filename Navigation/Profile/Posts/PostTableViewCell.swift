@@ -8,13 +8,10 @@
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
-    struct ViewModel: ViewModelProtocol {
-        var author: String
-        var description: String
-        var image: UIImage
-        var likes: Int
-        var views: Int
-    }
+    
+    var likedDelegate: TapLikedDelegate?
+    
+    private var tapLikeGestureRecognizer = UITapGestureRecognizer()
     
     private lazy var backView: UIView = {
         let view = UIView()
@@ -57,6 +54,7 @@ class PostTableViewCell: UITableViewCell {
         imageView.backgroundColor = .black
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
 
@@ -79,6 +77,7 @@ class PostTableViewCell: UITableViewCell {
         label.setContentCompressionResistancePriority(UILayoutPriority(250), for: .vertical)
         label.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isUserInteractionEnabled = true
         return label
     }()
 
@@ -96,10 +95,21 @@ class PostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupView()
+        self.setupGesture()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupGesture() {
+        self.tapLikeGestureRecognizer.addTarget(self, action: #selector(self.tapLiked(_:)))
+        self.likeLabel.addGestureRecognizer(self.tapLikeGestureRecognizer)
+    }
+    
+    @objc func tapLiked(_ gestureRecognizer: UITapGestureRecognizer) {
+        guard self.tapLikeGestureRecognizer === gestureRecognizer else { return }
+        likedDelegate?.tapLikedLabel()
     }
     
     override func prepareForReuse() {
@@ -114,12 +124,12 @@ class PostTableViewCell: UITableViewCell {
     private func setupView() {
         self.contentView.addSubview(self.backView)
         self.backView.addSubview(self.vStackView)
-        self.hStackView.addArrangedSubview(self.likeLabel)
-        self.hStackView.addArrangedSubview(self.viewLabel)
         self.vStackView.addArrangedSubview(self.authorLabel)
         self.vStackView.addArrangedSubview(self.postImageView)
         self.vStackView.addArrangedSubview(self.descriptionLabel)
         self.vStackView.addArrangedSubview(self.hStackView)
+        self.hStackView.addArrangedSubview(self.likeLabel)
+        self.hStackView.addArrangedSubview(self.viewLabel)
         
         let backViewConstraints = self.backViewConstraints()
         let vStackViewConstraints = self.vStackViewConstraints()
@@ -223,7 +233,7 @@ class PostTableViewCell: UITableViewCell {
 extension PostTableViewCell: Setupable {
     
     func setup(with viewModel: ViewModelProtocol) {
-        guard let viewModel = viewModel as? ViewModel else { return }
+        guard let viewModel = viewModel as? PostModel else { return }
         
         self.authorLabel.text = viewModel.author
         self.postImageView.image = viewModel.image

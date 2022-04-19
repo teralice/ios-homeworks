@@ -22,21 +22,20 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     }()
     
     lazy var photoImagesToGallery: UIImageView = {
-        let photoImagesToGallery = UIImageView()
-        photoImagesToGallery.clipsToBounds = true
-        photoImagesToGallery.translatesAutoresizingMaskIntoConstraints = false
-        
-        return photoImagesToGallery
+        let imageView = UIImageView()
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(backView)
-        backView.addSubview(photoImagesToGallery)
+        self.contentView.addSubview(backView)
+        self.backView.addSubview(photoImagesToGallery)
         
         let backViewTop = backView.topAnchor.constraint(equalTo: contentView.topAnchor)
-        let backViewLead = backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
-        let backViewTrail = backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        let backViewLeading = backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+        let backViewTrailing = backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         let backViewBottom = backView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         
         let photoImagesToGalleryCenterX = photoImagesToGallery.centerXAnchor.constraint(equalTo: backView.centerXAnchor)
@@ -45,12 +44,11 @@ class PhotosCollectionViewCell: UICollectionViewCell {
         let photoImagesToGalleryWidth = photoImagesToGallery.widthAnchor.constraint(equalTo: backView.widthAnchor)
         
         NSLayoutConstraint.activate([
-            backViewTop, backViewLead, backViewTrail, backViewBottom, photoImagesToGalleryHeight, photoImagesToGalleryCenterX, photoImagesToGalleryCenterY, photoImagesToGalleryWidth
-        ])
+            backViewTop, backViewLeading, backViewTrailing, backViewBottom, photoImagesToGalleryHeight, photoImagesToGalleryCenterX, photoImagesToGalleryCenterY, photoImagesToGalleryWidth
+        ].compactMap({ $0}))
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

@@ -7,7 +7,7 @@
 
 import UIKit
  
-class LogInViewController: UIViewController, MyViewDelegate {
+class LogInViewController: UIViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -93,10 +93,19 @@ class LogInViewController: UIViewController, MyViewDelegate {
         scrollView.verticalScrollIndicatorInsets = .zero
         
     }
+}
 
+extension LogInViewController: LogInViewDelegate {
+    
     func didTapButton() {
         self.navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
     
+    func alertLogIn() {
+        let alertController = UIAlertController(title: "Неверно введен логин или пароль", message: "Пожалуйста, проверьте вводимые значения и попробуйте еще раз. Напоминаем, что логином является ваш номер телефона или почта. Если забыли пароль, сообщите в службу поддержки пользователей.", preferredStyle: .alert)
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        alertController.addAction(actionOK)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
-

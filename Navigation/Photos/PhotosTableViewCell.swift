@@ -103,23 +103,19 @@ class PhotosTableViewCell: UITableViewCell {
     private func photoSize(for width: CGFloat) -> CGFloat {
         let neededWidth = width - 3 * photosStackView.spacing
         let itemWidth = floor(neededWidth / Constants.itemCount)
-        print("vvvvv \(width)")
-        print("hihihih \(neededWidth)")
-        print("alyalya \(itemWidth)")
         return itemWidth
     }
     
     private func setupView() {
+        self.contentView.addSubview(self.backView)
         self.photosStackView.addArrangedSubview(self.firstImageView)
         self.photosStackView.addArrangedSubview(self.secondImageView)
         self.photosStackView.addArrangedSubview(self.thirdImageView)
         self.photosStackView.addArrangedSubview(self.fourImageView)
         
         self.backView.addSubview(self.photosStackView)
-        
         self.backView.addSubview(self.titleLabel)
         self.backView.addSubview(self.iconImageView)
-        self.contentView.addSubview(self.backView)
         
         let backViewConstraints = self.backViewConstraints()
         let titleConstraints = self.titleConstraints()
