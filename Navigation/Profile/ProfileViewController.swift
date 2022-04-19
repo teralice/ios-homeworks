@@ -16,13 +16,6 @@ class ProfileViewController: UIViewController {
         return JSONDecoder()
     }()
     
-    private lazy var profileHeaderView: ProfileHeaderView = {
-        let view = ProfileHeaderView()
-        view.backgroundColor = .systemGray6
-        view.heightAnchor.constraint(equalToConstant: 250).isActive = true
-        return view
-    }()
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = UITableView.automaticDimension
@@ -33,6 +26,7 @@ class ProfileViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosCell")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "ArticleCell")
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "HeaderView")
         tableView.sectionHeaderTopPadding = .leastNormalMagnitude
         tableView.automaticallyAdjustsScrollIndicatorInsets = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -206,8 +200,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView =  profileHeaderView
+        let headerView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView")
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 250
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

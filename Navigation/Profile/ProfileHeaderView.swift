@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
 
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "3408"))
@@ -62,10 +62,11 @@ class ProfileHeaderView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.drawSelf()
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        self.contentView.backgroundColor = .systemGray6
+        drawSelf()
     }
 
     required init?(coder: NSCoder) {
