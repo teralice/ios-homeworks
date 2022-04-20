@@ -97,6 +97,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.setupNavigationBar()
         self.setupView()
+        
         self.fetchArticles { [weak self] articles in
             self?.dataSource = articles
             self?.tableView.reloadData()
@@ -189,10 +190,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
             cell.likedDelegate = self
-            
-            if liked {
+
+            if self.liked {
                 self.dataSource[indexPath.row - 1].likes += 1
-                liked.toggle()
+                self.liked.toggle()
             }
             cell.setup(with: returnPostModel(indexPath: indexPath))
             return cell
@@ -239,7 +240,7 @@ extension ProfileViewController: TapLikedDelegate, Setupable {
     }
     
     func tapLikedLabel() {
-        liked.toggle()
+        self.liked.toggle()
         self.tableView.reloadData()
     }
     

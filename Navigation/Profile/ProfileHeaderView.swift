@@ -66,11 +66,17 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         self.contentView.backgroundColor = .systemGray6
-        drawSelf()
+        self.drawSelf()
+        self.tapGesture()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func tapGesture() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hundleTapGesture(sender:)))
+        self.addGestureRecognizer(tapRecognizer)
     }
 
     private func drawSelf() {
@@ -117,5 +123,9 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         if !isEmptyStatus {
             print(statusTextField.text!)
         }
+    }
+    
+    @objc func hundleTapGesture(sender: UITapGestureRecognizer) {
+        self.statusTextField.resignFirstResponder()
     }
 }

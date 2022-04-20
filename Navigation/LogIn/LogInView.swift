@@ -123,6 +123,16 @@ class LogInView: UIView {
  //       }
     }
     
+    func tapRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.hundleTapGesture))
+        self.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func hundleTapGesture(sender: UITapGestureRecognizer) {
+        self.loginTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+    }
+    
     func warningEmpty(_ login: String, _ password: String) -> Bool {
         return login == "" || password == "" ? true : false
     }
@@ -138,6 +148,7 @@ class LogInView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.drawSelf()
+        self.tapRecognizer()
     }
     
     required init?(coder: NSCoder) {
