@@ -1,0 +1,38 @@
+{
+    "posts": [{
+        "author": "Lina Chandler",
+        "description": "Cake is an essential attribute of a festive table for a birthday, a party and almost a daily treat for those with a sweet tooth. The history of wedding cakes is no less interesting than the secrets of their preparation. About both we will definitely take you today.",
+        "image": "1",
+        "likes": 1000,
+        "views": 10000
+    },
+    {
+        "author": "Дана Наумова",
+        "description": "Прежде чем приступить к приготовлению торта, я хочу рассказать историю его создания. Рецепт придуман в Германии. Название торта на немецком языке milchmädchen torte, а на английском - milkygirl cake.",
+        "image": "2",
+        "likes": 10,
+        "views": 100
+    },
+    {
+        "author": "Denny",
+        "description": "Tiramisu is perhaps one of the most popular desserts in the world. Love for him has already spread far beyond Italy. You can order this dessert in almost every cafe or restaurant anywhere in the world",
+        "image": "3",
+        "likes": 540,
+        "views": 1500
+    },
+    {
+        "author": "Антонио",
+        "description": "Пирожные makarons интересны тем, что могут быть абсолютно любого вкуса, который только придет вам на ум. Классическими считаются вкусы : фисташка, шоколад, ваниль, малина и лимон.",
+        "image": "5",
+        "likes": 100,
+        "views": 1100
+    },
+    {
+        "author": "Larisa",
+        "description": "Dessert based on cream cheese or curd mousse is very popular in the USA. But it originates from ancient Greece in the form of a curd pie, which was prepared for Olympic athletes. In Europe, the dish became popular thanks to the Romans, and it came to the USA along with immigrants. From there, the widespread distribution of this dessert began. Of course, New York chefs have made great efforts to improve this dessert to the maximum.",
+        "image": "4",
+        "likes": 35,
+        "views": 189
+    }
+    ]
+}
