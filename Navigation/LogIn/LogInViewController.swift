@@ -32,7 +32,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        logInView.delegate = self
+        self.logInView.delegate = self
     }
     
     override func viewDidLayoutSubviews() {

@@ -10,6 +10,10 @@ import UIKit
 class LogInView: UIView {
     
     weak var delegate: LogInViewDelegate?
+    
+    private var topConstraintButton: NSLayoutConstraint?
+    private let minLength = 5
+    private let maxLengthPhone = 11
  
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -86,65 +90,6 @@ class LogInView: UIView {
         return label
     }()
     
-    private var topConstraintButton: NSLayoutConstraint?
-    private let minLength = 5
-    private let maxLengthPhone = 11
-    
-    private func validPassword(password : String) -> Bool {
-        let regexPassword = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&*]).{\(minLength),}$"
-        return NSPredicate(format: "SELF MATCHES %@", regexPassword).evaluate(with: passwordTextField.text!)
-    }
-    
-    private func validLoginEmail(login: String) -> Bool {
-        let regexEmail = "^(?=.*[a-z])(?=.*[@]).{\(minLength),}$"
-        return NSPredicate(format: "SELF MATCHES %@", regexEmail).evaluate(with: loginTextField.text!)
-    }
-    
-    private func validLoginPhone(login: String) -> Bool {
-        let regexPhone = "^(?=.*[0-9]).{\(maxLengthPhone - 1),\(maxLengthPhone)}$"
-        return NSPredicate(format: "SELF MATCHES %@", regexPhone).evaluate(with: loginTextField.text!)
-    }
-    
-    @objc func buttonPressed() {
-        guard let login = self.loginTextField.text else {return}
-        guard let password = self.passwordTextField.text else {return}
-        
-        let warningEmpty = warningEmpty(login, password)
-        let warningAmount = warningAmount(password)
-        let warningValid = warningValid(login, password)
-        
-//        if warningEmpty || warningAmount || warningValid {
-//            stackView.layer.borderColor = warningEmpty ? UIColor.red.cgColor : UIColor.lightGray.cgColor
-//            warningLabel.isHidden = warningAmount ? false : true
-//            self.topConstraintButton?.constant = warningAmount ? 16 + self.warningLabel.font.pointSize : 0
-//            if warningValid { delegate?.alertLogIn() }
-//        } else {
-            delegate?.didTapButton()
- //       }
-    }
-    
-    func tapRecognizer() {
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.hundleTapGesture))
-        self.addGestureRecognizer(tapRecognizer)
-    }
-    
-    @objc func hundleTapGesture(sender: UITapGestureRecognizer) {
-        self.loginTextField.resignFirstResponder()
-        self.passwordTextField.resignFirstResponder()
-    }
-    
-    func warningEmpty(_ login: String, _ password: String) -> Bool {
-        return login == "" || password == "" ? true : false
-    }
-    
-    func warningAmount(_ password: String) -> Bool {
-        return password.count < minLength ? true : false
-    }
-    
-    func warningValid(_ login: String, _ password: String) -> Bool {
-        return validPassword(password: password) && (validLoginEmail(login: login) || validLoginPhone(login: login)) ? false : true
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.drawSelf()
@@ -217,3 +162,64 @@ class LogInView: UIView {
     }
 }
 
+
+extension LogInView {
+    
+    private func validPassword(password : String) -> Bool {
+        let regexPassword = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&*]).{\(minLength),}$"
+        return NSPredicate(format: "SELF MATCHES %@", regexPassword).evaluate(with: passwordTextField.text!)
+    }
+    
+    private func validLoginEmail(login: String) -> Bool {
+        let regexEmail = "^(?=.*[a-z])(?=.*[@]).{\(minLength),}$"
+        return NSPredicate(format: "SELF MATCHES %@", regexEmail).evaluate(with: loginTextField.text!)
+    }
+    
+    private func validLoginPhone(login: String) -> Bool {
+        let regexPhone = "^(?=.*[0-9]).{\(maxLengthPhone - 1),\(maxLengthPhone)}$"
+        return NSPredicate(format: "SELF MATCHES %@", regexPhone).evaluate(with: loginTextField.text!)
+    }
+    
+    func warningEmpty(_ login: String, _ password: String) -> Bool {
+        return login == "" || password == "" ? true : false
+    }
+    
+    func warningAmount(_ password: String) -> Bool {
+        return password.count < minLength ? true : false
+    }
+    
+    func warningValid(_ login: String, _ password: String) -> Bool {
+        return validPassword(password: password) && (validLoginEmail(login: login) || validLoginPhone(login: login)) ? false : true
+    }
+    
+    @objc func buttonPressed() {
+        guard let login = self.loginTextField.text else {return}
+        guard let password = self.passwordTextField.text else {return}
+        
+        let warningEmpty = warningEmpty(login, password)
+        let warningAmount = warningAmount(password)
+        let warningValid = warningValid(login, password)
+        
+        if warningEmpty || warningAmount || warningValid {
+            stackView.layer.borderColor = warningEmpty ? UIColor.red.cgColor : UIColor.lightGray.cgColor
+            warningLabel.isHidden = warningAmount ? false : true
+            self.topConstraintButton?.constant = warningAmount ? 16 + self.warningLabel.font.pointSize : 0
+            if warningValid { delegate?.alertLogIn() }
+        } else {
+            delegate?.didTapButton()
+        }
+    }
+}
+
+extension LogInView {
+    
+    func tapRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.hundleTapGesture))
+        self.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func hundleTapGesture(sender: UITapGestureRecognizer) {
+        self.loginTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+    }
+}

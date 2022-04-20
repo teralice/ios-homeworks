@@ -35,6 +35,5 @@ class TabBarController: UITabBarController {
            navController.navigationBar.prefersLargeTitles = false
 
            return navController
-           
        }
 }

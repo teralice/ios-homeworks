@@ -11,6 +11,10 @@ class PhotosViewController: UIViewController {
     private enum Constants {
         static let itemCount: CGFloat = 3
     }
+    
+    private var collectionDataSource = [
+       "c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10","c11", "c12", "c13", "c14", "c15","c16", "c17", "c18", "c19", "c20",
+    ]
 
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -50,21 +54,17 @@ class PhotosViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-    private var collectionDataSource = [
-       "c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10","c11", "c12", "c13", "c14", "c15","c16", "c17", "c18", "c19", "c20",
-    ]
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
         self.title = "Photo Gallery"
         self.navigationItem.backButtonTitle = "Back"
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
     }
 
     private func setupView() {
@@ -94,6 +94,19 @@ class PhotosViewController: UIViewController {
         let neededWidth = width - 4 * spacing
         let itemWidth = floor(neededWidth / Constants.itemCount)
         return CGSize(width: itemWidth, height: itemWidth)
+    }
+    
+    private func openPhoto(tapedPhoto: Bool) {
+        self.backView.isHidden = tapedPhoto ? false : true
+        self.backButton.alpha = tapedPhoto ? 1 : 0
+        self.collectionView.isHidden = tapedPhoto ? true : false
+        self.collectionView.isScrollEnabled = tapedPhoto ? false : true
+    }
+    
+    @objc func tapBackButton() {
+        let indexPath = collectionView.indexPathsForSelectedItems!
+        self.openPhoto(tapedPhoto: false)
+        self.collectionView.reloadItems(at: indexPath)
     }
 }
 
@@ -135,18 +148,5 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
             self.openPhoto(tapedPhoto: true)
             self.view.layoutIfNeeded()
         }
-    }
-    
-    func openPhoto(tapedPhoto: Bool) {
-        self.backView.isHidden = tapedPhoto ? false : true
-        self.backButton.alpha = tapedPhoto ? 1 : 0
-        self.collectionView.isHidden = tapedPhoto ? true : false
-        self.collectionView.isScrollEnabled = tapedPhoto ? false : true
-    }
-    
-    @objc func tapBackButton() {
-        let indexPath = collectionView.indexPathsForSelectedItems!
-        self.openPhoto(tapedPhoto: false)
-        self.collectionView.reloadItems(at: indexPath)
     }
 }

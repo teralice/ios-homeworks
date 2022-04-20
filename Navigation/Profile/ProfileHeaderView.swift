@@ -73,11 +73,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func tapGesture() {
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hundleTapGesture(sender:)))
-        self.addGestureRecognizer(tapRecognizer)
-    }
 
     private func drawSelf() {
         self.addSubview(self.avatarImageView)
@@ -114,6 +109,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             trailingFullNameLabelConstraint, topSetStatusButton, leadingSetStatusButton, trailingSetStatusButton,
             heightSetStatusButton, bottomTextFieldConstraint, leadingTextFieldConstraint, trailingTextFieldConstraint, bottomWarningLabelConstraint, leadingWarningLabelConstraint, trailingWarningLabelConstraint
         ].compactMap({ $0}))
+    }
+    
+    private func tapGesture() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hundleTapGesture(sender:)))
+        self.addGestureRecognizer(tapRecognizer)
     }
     
     @objc func buttonPressed() {

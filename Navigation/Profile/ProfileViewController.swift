@@ -12,10 +12,6 @@ class ProfileViewController: UIViewController {
     private var liked = false
     private var dataSource: [Posts.Post] = []
     
-    private lazy var jsonDecoder: JSONDecoder = {
-        return JSONDecoder()
-    }()
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = UITableView.automaticDimension
@@ -93,20 +89,25 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
+    private lazy var jsonDecoder: JSONDecoder = {
+        return JSONDecoder()
+    }()
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupNavigationBar()
         self.setupView()
+        self.postView()
         
         self.fetchArticles { [weak self] articles in
             self?.dataSource = articles
             self?.tableView.reloadData()
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = true
     }
     
     private func setupNavigationBar() {
@@ -118,7 +119,6 @@ class ProfileViewController: UIViewController {
     
     private func setupView() {
         self.view.addSubview(self.tableView)
-        self.postView()
 
         let topConstraint = self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
         let leadingConstraint = self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
