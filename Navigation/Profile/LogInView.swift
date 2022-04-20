@@ -78,12 +78,13 @@ class LogInView: UIView {
     }()
     
     @objc func buttonPressed() {
-        delegate?.didTapButton()
+        self.delegate?.didTapButton()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.drawSelf()
+        self.tapRecognizer()
     }
     
     required init?(coder: NSCoder) {
@@ -138,6 +139,16 @@ class LogInView: UIView {
         return [
             topConstraint, leadingConstraint, trailingConstraint, heightConstraint
         ]
+    }
+    
+    func tapRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.hundleTapGesture))
+        self.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func hundleTapGesture(sender: UITapGestureRecognizer) {
+        self.loginTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
     }
 }
 

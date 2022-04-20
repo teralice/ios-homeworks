@@ -22,6 +22,9 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "ArticleCell")
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "HeaderView")
+        tableView.sectionHeaderTopPadding = .leastNormalMagnitude
+        tableView.automaticallyAdjustsScrollIndicatorInsets = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -61,10 +64,10 @@ class ProfileViewController: UIViewController {
     private func setupView() {
         self.view.addSubview(self.tableView)
         
-        let topConstraint = self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor)
+        let topConstraint = self.tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
         let leadingConstraint = self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
         let trailingConstraint = self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        let bottomConstraint = self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        let bottomConstraint = self.tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         
         NSLayoutConstraint.activate([
             topConstraint, leadingConstraint, trailingConstraint, bottomConstraint
@@ -109,10 +112,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-           let headerView =  profileHeaderView
-           headerView.backgroundColor = .systemGray6
-        headerView.heightAnchor.constraint(equalToConstant: 250).isActive = true
-
-           return headerView
-       }
+        let headerView =  tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView")
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 250
+    }
 }

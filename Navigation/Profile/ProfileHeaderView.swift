@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
 
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "3408"))
@@ -59,13 +59,24 @@ class ProfileHeaderView: UIView {
         return textField
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        self.contentView.backgroundColor = .systemGray6
         self.drawSelf()
+        self.tapGesture()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func tapGesture() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hundleTapGesture(sender:)))
+        self.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func hundleTapGesture(sender: UITapGestureRecognizer) {
+        self.statusTextField.resignFirstResponder()
     }
 
     private func drawSelf() {
